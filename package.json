@@ -1,0 +1,36 @@
+{
+  "author": "Shirtless Kirk <dev@shirtlesskirk.com>",
+  "description": "ChromeCast experiments",
+  "homepage": "https://wyerex.github.io/cc-experiments",
+  "keywords": [
+    "Chromecast",
+    "JavaScript"
+  ],
+  "license": "WTFPL",
+  "main": "main.js",
+  "name": "cc-experiments",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wyverex/cc-experiments.git"
+  },
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "del": "^2.2.2",
+    "fs-jetpack": "^0.10.5",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "istanbul": "^0.4.5",
+    "minimist": "^1.2.0",
+    "mocha": "^3.2.0",
+    "rollup": "^0.41.4",
+    "rollup-plugin-istanbul": "^1.1.0",
+    "source-map-support": "^0.4.10"
+  }
+}
