@@ -1,7 +1,9 @@
 'use strict';
 
+const filesize = require('rollup-plugin-filesize');
 const path = require('path');
 const jetpack = require('fs-jetpack');
+const replace = require('rollup-plugin-replace');
 const rollup = require('rollup').rollup;
 
 const nodeBuiltInModules = ['assert', 'buffer', 'child_process', 'cluster',
@@ -22,9 +24,16 @@ function generateExternalModulesList() {
 
 const cached = {};
 
-module.exports = function bundle(src, dest, opts) {
+module.exports = function bundler(src, dest, opts) {
+    const appManifest = jetpack.read('./package.json', 'json');
+
     opts = opts || {};
-    opts.rollupPlugins = opts.rollupPlugins || [];
+    opts.rollupPlugins = (opts.rollupPlugins || []).concat([
+        filesize(),
+        replace({
+            VERSION: appManifest.version
+        })
+    ]);
 
     return rollup({
         entry: src,
