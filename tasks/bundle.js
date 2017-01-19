@@ -52,7 +52,7 @@ module.exports = function bundler(src, dest, opts) {
         });
         // Wrap code in self invoking function so the variables don't
         // pollute the global namespace.
-        const isolatedCode = `(function autogen() {${result.code}'\n}());`;
+        const isolatedCode = `(function autogen() {${result.code}}());`;
 
         return Promise.all([
             jetpack.writeAsync(dest, `${isolatedCode}\n//# sourceMappingURL=${jsFile}.map`),
