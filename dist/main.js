@@ -61,9 +61,11 @@ function initCastApi(settings) {
     });
 
     return new Promise((resolve, reject) => {
-        chrome.cast.initialize(
-            new chrome.cast.ApiConfig(
-                new chrome.cast.SessionRequest(settings.appId),
+        const cc = window.chrome.cast;
+
+        cc.initialize(
+            new cc.ApiConfig(
+                new cc.SessionRequest(settings.appId),
                 (obj) => dispatch('onSessionListener', { data: obj, settings }),
                 (obj) => dispatch('onReceiverListener', { data: obj, settings })
             ),
@@ -78,11 +80,23 @@ function requestSession() { // wrap with Promise and dispatch events
     dispatch('onSessionRequest');
 
     return new Promise((resolve, reject) => {
-        chrome.cast.requestSession(resolve, reject);
+        const cc = window.chrome.cast;
+
+        cc.requestSession(resolve, reject);
     })
     .then((session) => dispatch('onSessionRequestComplete', { data: session }))
     .catch((e) => dispatch('onSessionRequestError', { data: e }));
 }
+
+/*function stopSession(session) {
+    if (session) {
+        dispatch('onSessionStop');
+        session.stop(
+            dispatch('onSessionStopSuccess', session),
+            dispatch('onSessionStopError', session)
+        );
+    }
+}*/
 
 var sender = {
     init: init$1,
