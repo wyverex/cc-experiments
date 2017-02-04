@@ -41,6 +41,6 @@
     "rollup-plugin-filesize": "^1.0.1",
     "rollup-plugin-istanbul": "^1.1.0",
     "rollup-plugin-replace": "^1.1.1",
-    "source-map-support": "^0.4.10"
+    "source-map-support": "^0.4.11"
   }
 }

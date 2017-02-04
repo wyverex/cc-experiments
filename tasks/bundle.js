@@ -60,6 +60,6 @@ module.exports = function bundler(src, dest, opts) {
         ]);
     })
     .catch(function (err) {
-        console.log('No files bundled');
+        console.log('No files bundled', err);
     });
 };
